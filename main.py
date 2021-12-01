@@ -14,7 +14,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.classes.function import nodes
 from networkx.generators.classic import null_graph
-
+from NetworkxTR import *
 
 if __name__ == "__main__":
 
@@ -87,30 +87,6 @@ if __name__ == "__main__":
                 print([n for n in G.neighbors(L[i])])
         
 
-    def execute(g, start):
-        K = [] #Known
-        F = [] #Frontier #list_des_noeuds
-        i = True #init
-
-        while len(F)>0 or i:
-            if i:
-                N = start
-                i = False
-            else:
-                N = g.successors( F.pop(0) )
-            for n in N:
-                if n not in K:
-                    K.append(n)
-                    F.append(n)
-            
-        print(K)
-    
-                
-
-
-
-
-
     # iterate()
-    execute(G, ['X','A'])
+    is_safe_bfs(G, ['X','A'])
     plt.show()
