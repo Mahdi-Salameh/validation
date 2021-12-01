@@ -89,6 +89,8 @@ if __name__ == "__main__":
         
 
     # iterate()
-    g = NFA(G, ['C'],['A','X'])
-    is_safe_bfs(g)
+    g = NFA(G, ['A'],['B','T'])
+    temp,n = find_accepting_bfs(g)
+    if temp:
+        print(n)
     plt.show()
