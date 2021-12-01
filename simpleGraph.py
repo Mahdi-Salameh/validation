@@ -12,14 +12,14 @@ class SimpleGraph(Transition_Relation):
 
     def next(self, c):
         try:
-            return self.g[c]
+            return self.g.successors(c)
         except:
             return []
 
 class NFA(SimpleGraph, AcceptingSet):
 
     def __init__(self, g, iniS, acc):
-        super()._init_(g, iniS)
+        super().__init__(g, iniS)
         self.accepting = acc
 
     def is_accepting(self, c):

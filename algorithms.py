@@ -5,21 +5,24 @@ Created Tuesday November 30 21:36:20 2021
 @author: ALBasha_OJEIMI_SALAMEH
 """
 
-def is_safe_bfs(g, start):
-        K = [] #Known
-        F = [] #Frontier #list_des_noeuds
-        i = True #init
+def is_safe_bfs(graph):
+        known = [] #Known
+        frontier = [] #Frontier #list_des_noeuds
+        at_start = True #init
 
-        while len(F)>0 or i:
-            if i:
-                N = start
-                i = False
+        while frontier or at_start:
+            if at_start:
+                neighbours = graph.initial()
+                at_start = False
             else:
-                N = g.successors( F.pop(0) )
-            for n in N:
-                if n not in K:
-                    K.append(n)
-                    F.append(n)
+                neighbours = graph.next( frontier.pop(0) )
+            for n in neighbours:
+                if graph.is_accepting(n):
+                    return False
+
+                if n not in known:
+                    known.append(n)
+                    frontier.append(n)
             
-        print(K)
+        print(known)
 

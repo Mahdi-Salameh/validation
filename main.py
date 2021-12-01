@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 from networkx.classes.function import nodes
 from networkx.generators.classic import null_graph
 from algorithms import *
+from simpleGraph import *
 
 if __name__ == "__main__":
 
@@ -88,5 +89,6 @@ if __name__ == "__main__":
         
 
     # iterate()
-    is_safe_bfs(G, ['X','A'])
+    g = NFA(G, ['C'],['A','X'])
+    is_safe_bfs(g)
     plt.show()
