@@ -14,7 +14,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from networkx.classes.function import nodes
 from networkx.generators.classic import null_graph
-from NetworkxTR import *
+from algorithms import *
 
 if __name__ == "__main__":
 

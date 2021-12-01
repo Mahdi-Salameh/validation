@@ -23,7 +23,3 @@ def is_safe_bfs(g, start):
             
         print(K)
 
-class NetworkxTR:
-    
-    def _init_(self, g):
-        self.__g = g
