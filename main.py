@@ -4,7 +4,11 @@ Created Tuesday November 24 14:19:20 2021
 
 @author: ALBasha_OJEIMI_SALAMEH
 """
+<<<<<<< HEAD
 #test commit git ghfhg
+=======
+#test commit git fddf
+>>>>>>> 0b1209b9041bd317cb436c7b9ed1ae3b87ae9174
 # -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 # -----------------<Importing the necessary library>-----------------
 # -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
