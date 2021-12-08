@@ -1,5 +1,5 @@
 from _typeshed import Self
-import kernel
+
 
 class BehSoupSemantics(semanticTransitionRelations):
     def __init__(self,program):
