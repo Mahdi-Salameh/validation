@@ -100,6 +100,15 @@ def tohIterative(num_of_disks, src, aux, dest):
 		elif (i % 3 == 0):
 			moveDisksBetweenTwoPoles(aux, dest, a, d)
 
+#08/12/2021
+def hanoi_soap(nb_stacks, nb_disks):
+    i_conf = HanoiConfiguration(nb_stacks,nb_disks)
+    soup = BehaviorSoup(i_conf)
+    for i in range(nb_stacks):
+        for j in range(nb_stacks):
+            soup.add(f'{i}-{j}',guard_def(i,j),action_def(i,j))
+    return soap
+
 
 # class Hanoi(Transition_Relation, AcceptingSet):
 
