@@ -119,6 +119,31 @@ def tohIterative(num_of_disks, src, aux, dest):
             moveDisksBetweenTwoPoles(aux, dest, a, d)
 
 
+# 08/12/2021
+
+
+def hanoi_soap(nb_stacks, nb_disks):
+    i_conf = HanoiConfiguration(nb_stacks, nb_disks)
+    soup = Behavior_Soup(i_conf)
+    for i in range(nb_stacks):
+        for j in range(nb_stacks):
+            soup.add(f'{i}-{j}', guarde_def(i, j), action_def(i, j))
+    return soup
+
+
+def guarde_def(s, t):
+    return lambda c: len(c.stocks[s]) \
+        and len(c.stocks[t]) == 0 \
+        or c.stocks[s][-1] < \
+        c.stocks[t][-1]
+
+
+def action_def(s, t):
+    def action(c):
+        disk = c.stocks[s].pop()
+        c.stocks[t].append(disk)
+    return action
+
 # class Hanoi(Transition_Relation, AcceptingSet):
 
 
