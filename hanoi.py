@@ -100,6 +100,20 @@ def tohIterative(num_of_disks, src, aux, dest):
 		elif (i % 3 == 0):
 			moveDisksBetweenTwoPoles(aux, dest, a, d)
 
+def guarde_def(s,t):
+	return lambda c:len(c.stocks[s]) \
+		and len(c.stocks[t])==0 \
+		or c.stocks[s][-1] < \
+			c.stocks[t][-1]
+
+def action_def(s,t):
+	def action(c):
+		disk = c.stocks[s].pop()
+		c.stocks[t].append(disk)
+	return action 
+
+
+
 
 # class Hanoi(Transition_Relation, AcceptingSet):
 
