@@ -29,3 +29,8 @@ class ParentStore_Proxy (Identity_Proxy):
                 self.parent[n] = conf
 
         return nS
+
+class SemanticTransitionRelation: 
+    def initial (self):pass
+    def actions (self, conf): pass
+    def execute (self, conf, action):pass
