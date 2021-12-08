@@ -1,19 +1,20 @@
 from _typeshed import Self
-import kernel
+from kernel import *
 
-class BehSoupSemantics(semanticTransitionRelations):
-    def __init__(self,program):
+
+class BehSoupSemantics(SemanticTransitionRelation):
+    def __init__(self, program):
         self.soup = program
-   
+
     def initial(self):
-        return [soup.initial]
+        return [self.soup.initial]
 
     def actions(self, conf):
-        return list(map(lambda beh : beh.action,
-        filter(lambda beh: beh.guard(conf),
-        self.soup.behaviours)))
+        return list(map(lambda beh: beh.action,
+                        filter(lambda beh: beh.guard(conf),
+                               self.soup.behaviours)))
 
-    def execute(self,c,a):
-        target = copy.deepcopy(c)
+    def execute(self, c, a):
+        target = self.copy.deepcopy(c)
         r = a(target)
         return target
