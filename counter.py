@@ -2,6 +2,7 @@ from BehaviorSoup import *
 from souplang import *
 from algorithms import *
 from STR2TR import *
+from kernel import *
 
 
 class CounterConfig:
@@ -11,7 +12,7 @@ class CounterConfig:
     def __hash__(self):
         return int(hash(self.jpc))
 
-    def __equals__(self, other):
+    def __eq__(self, other):
         return self.jpc == other.jpc
 
     def __repr__(self):
@@ -36,17 +37,13 @@ def counter(max):
 
 
 if __name__ == "__main__":
-    semantics = BehSoupSemantics(counter(1))
+    semantics = BehSoupSemantics(counter(5))
     print(semantics.initial())
     print(semantics.actions(semantics.initial()[0]))
 
-    tr = STR2TR(semantics)
-    print(tr.initial())
-    print(tr.next(tr.initial()[0]))
+    
 
-    tr = isAcceptingProxy(tr, lambda c: c.jpc == 40)
-
-    r = find_accepting_bfs(tr)
+    r = bfs(STR2TR(semantics))
     print(r)
 
     predicate_model_checker(semantics, lambda c: c.jpc == 2)
