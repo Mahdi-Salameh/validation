@@ -112,6 +112,8 @@ if __name__ == "__main__":
         print(n)
     plt.show()
 
+    Behavior_Object =
+
     semantics = BehSoupSemantics(counter(3))
     predicate_model_checker(semantics, lambda c: c.pc == 2)
     predicate_model_checker(semantics, lambda c: c.pc > 50)

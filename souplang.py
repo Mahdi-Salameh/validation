@@ -1,4 +1,5 @@
 from kernel import*
+import copy
 
 
 class BehSoupSemantics(SemanticTransitionRelation):
@@ -11,9 +12,9 @@ class BehSoupSemantics(SemanticTransitionRelation):
     def actions(self, conf):
         return list(map(lambda beh: beh.action,
                         filter(lambda beh: beh.guard(conf),
-                               self.soup.behaviours)))
+                               self.soup.behaviors)))
 
     def execute(self, c, a):
-        target = self.copy.deepcopy(c)
+        target = copy.deepcopy(c)
         r = a(target)
         return target

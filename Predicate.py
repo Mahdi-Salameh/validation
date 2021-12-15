@@ -9,5 +9,5 @@ def predicate_model_checker(function, value):
         print("False")
 
 
-predicate_model_checker(sum, [1, 2, 3])
+# predicate_model_checker(sum, [1, 2, 3])
 # predicate_model_checker(lambda x: True, [1, 2, 3])
