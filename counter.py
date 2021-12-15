@@ -1,3 +1,6 @@
+from BehaviorSoup import *
+
+
 class CounterConfig:
     def __init__(self):
         self.pc = 0
@@ -10,7 +13,7 @@ class CounterConfig:
 
 
 def counter(max):
-    soup = BehaviourSoup((CounterConfig))
+    soup = Behavior_Soup((CounterConfig))
 
     def inc(c):
         c.pc = c.pc + 1
