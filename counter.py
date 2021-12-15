@@ -4,16 +4,22 @@ class CounterConfig:
 
     def __hash__(self):
         return hash(self.pc)
-    
-    def __equals__(self,other):
+
+    def __equals__(self, other):
         return self.pc == other .pc
 
 
-def inc(c):
-    c.pc = c.pc + 1
+def counter(max):
+    soup = BehaviourSoup((CounterConfig))
 
-def reset(c):
-    c.pc = 0
+    def inc(c):
+        c.pc = c.pc + 1
 
+    soup.add("t", lambda c: c.pc < max, inc)
 
+    def reset(c):
+        c.pc = 0
 
+    soup.add("r", lambda c: c.pc >= max, reset)
+
+    return soup
