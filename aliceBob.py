@@ -58,6 +58,6 @@ if __name__ == "__main__":
     print(semantics.actions(semantics.initial()[0]))
 
     # r = bfs(STR2TR(semantics))
-    # print(r)
+    # print(r) 
 
     predicate_model_checker(semantics, lambda c: c.apc == 0)
