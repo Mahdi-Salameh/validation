@@ -38,13 +38,11 @@ def counter(max):
 
 if __name__ == "__main__":
     semantics = BehSoupSemantics(counter(5))
-    print(semantics.initial())
-    print(semantics.actions(semantics.initial()[0]))
-
-    
-
+    #print(semantics.initial())
+    #print(semantics.actions(semantics.initial()[0]))
     r = bfs(STR2TR(semantics))
-    print(r)
-
+    #print(r)
     predicate_model_checker(semantics, lambda c: c.jpc == 2)
-    predicate_model_checker(semantics, lambda c: c.jpc > 50)
+    #print(r)
+    #predicate_model_checker(semantics, lambda c: c.jpc > 50)
+    #print(r)
