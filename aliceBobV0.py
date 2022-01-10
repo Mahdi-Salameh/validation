@@ -21,7 +21,7 @@ class aliceBobConfig:
         return str(self.apc) + str(self.bpc)
 
 
-def aliceBob(maxi):
+def aliceBob():
     instanceConfCount = aliceBobConfig()
     soup = Behavior_Soup(instanceConfCount)
 
@@ -63,7 +63,7 @@ def aliceBob(maxi):
 
 
 if __name__ == "__main__":
-    semantics = BehSoupSemantics(aliceBob(2))
+    semantics = BehSoupSemantics(aliceBob())
     # print(semantics.initial())
     # print(semantics.actions(semantics.initial()[0]))
 

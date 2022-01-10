@@ -20,7 +20,7 @@ class aliceBobConfig:
         return self.alice_pc == other.alice_pc & self.bob_pc == other.bob_pc & self.alice_flag == other.alice_flag & self.bob_flag == other.bob_flag
 
     def __repr__(self):
-        return str(self.alice_pc) + str(self.bob_pc) + str(self.alice_flag) + str(self.bob_flag)
+        return str(self.alice_pc) + " " + str(self.bob_pc) + " " + str(self.alice_flag) + " " + str(self.bob_flag)
 
 
 def aliceBob():
@@ -68,9 +68,10 @@ def aliceBob():
 
 if __name__ == "__main__":
     semantics = BehSoupSemantics(aliceBob())
+    print(semantics.initial())
 
-    r = bfs(STR2TR(semantics))
-    print("States: ", r) 
+    # r = bfs(STR2TR(semantics))
+    # print("States: ", r) 
 
     predicate_model_checker(semantics, lambda c: c.bob_pc == 0)
 
