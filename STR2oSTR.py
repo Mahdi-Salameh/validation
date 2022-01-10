@@ -29,4 +29,13 @@ class STR2oSTR:
                 num_action -= 1
                 self.get_synchronons_actions(k_target,buchi_src,synchronons_actions)
             if num_actions == 0:
-                self.get_synchronons_actions(kripke_src,buchi_src,synchronons_actions) 
+                self.get_synchronons_actions(kripke_src,buchi_src,synchronons_actions)
+
+    def get_synchronons_actions(self,kc,bc,is_synca):
+        buchi_actions = self.rhs.actions(kc,bc)
+        return is_synca.extend(map(lambda ba:(kc,ba),buchi_actions))
+
+    def execute(self,action,conf):
+        ktarget,baction = action
+        _,bsrc = conf
+        return ktarget,self.rhs.execute(ktarget,baction,bsrc) 
