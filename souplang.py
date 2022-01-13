@@ -16,7 +16,12 @@ class Behavior:
         self.name = name
         self.action = a
         self.guard = g
+        
+    def __str__(self):
+        return self.name
 
+    def __repr__(self):
+        return self.__str__()
 
 class BehSoupSemantics(SemanticTransitionRelation):
     def __init__(self, program):
