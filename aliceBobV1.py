@@ -1,4 +1,3 @@
-from BehaviorSoup import *
 from souplang import *
 from algorithms import *
 from STR2TR import *

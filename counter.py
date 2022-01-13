@@ -1,4 +1,4 @@
-from BehaviorSoup import *
+from souplang import *
 from souplang import *
 from algorithms import *
 from STR2TR import *
@@ -34,15 +34,3 @@ def counter(max):
     soup.add("r", lambda c: c.jpc >= max, reset)
 
     return soup
-
-
-if __name__ == "__main__":
-    semantics = BehSoupSemantics(counter(5))
-    #print(semantics.initial())
-    #print(semantics.actions(semantics.initial()[0]))
-    r = bfs(STR2TR(semantics))
-    #print(r)
-    predicate_model_checker(semantics, lambda c: c.jpc == 2)
-    #print(r)
-    #predicate_model_checker(semantics, lambda c: c.jpc > 50)
-    #print(r)

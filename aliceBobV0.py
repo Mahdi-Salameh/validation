@@ -1,4 +1,3 @@
-from BehaviorSoup import *
 from souplang import *
 from algorithms import *
 from STR2TR import *
@@ -60,24 +59,3 @@ def aliceBob():
     # soup.add("aliceBobToSc", lambda c: c.apc + c.bpc == maxi, aliceBobToSc)
 
     return soup
-
-
-if __name__ == "__main__":
-    semantics = BehSoupSemantics(aliceBob())
-    # print(semantics.initial())
-    # print(semantics.actions(semantics.initial()[0]))
-
-    # for action in semantics.actions(semantics.initial()[0]):
-    #     print(inspect.getsource(action))
-
-    # print(inspect.getsource(semantics.actions(semantics.initial()[0]) ))
-
-    r = bfs(STR2TR(semantics))
-    print("States: ", r) 
-
-    predicate_model_checker(semantics, lambda c: c.bpc == 0)
-
-    print("Deadlock Test: ", end=" ")
-    predicate_model_checker(semantics, lambda c: len(semantics.actions(c)) == 0 )
-    print("Critical section Test: ", end=" ")
-    predicate_model_checker(semantics, lambda c: c.apc == 1 and c.bpc == 1 )
