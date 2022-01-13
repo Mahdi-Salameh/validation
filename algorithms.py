@@ -32,7 +32,7 @@ def bfs(graph):
     return known
 
 def find_accepting_bfs(graph):
-    known = dict()  # Known
+    known = set()  # Known
     frontier = Deque()  # Frontier #list_des_noeuds
     at_start = True  # init
 
@@ -45,12 +45,10 @@ def find_accepting_bfs(graph):
         for n in neighbours:
             
             if n not in known:
-                if graph.is_accepting(n):
-                    return True, n
-                known[n] = n
+                known.add(n)
                 frontier.append(n)
 
-    return False, None
+    return known
 
 def is_bfs_reachable(graph, start, end):
     known = set()  # Known
@@ -122,7 +120,6 @@ def predicate_model_checker(semantics, predicate):
 
     tr = ParentStore_Proxy(tr)
     r = find_accepting_bfs(tr)
-    get_trace(tr.parent, r, tr.initial())
 
 
 def get_trace(parents, result, initial):
