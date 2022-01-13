@@ -115,8 +115,6 @@ def find_acceptingbfs(g, initial = None):
 
 
 
-
-
 def predicate_model_checker(semantics, predicate):
     tr = STR2TR(semantics)
 
