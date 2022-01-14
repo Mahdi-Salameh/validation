@@ -112,7 +112,7 @@ def main_networkx():
     # temp, n = find_accepting_bfs(g)
     # if temp:
     #     print(n)
-    known = find_accepting_bfs(g)
+    known = find_accepting_bfs_1(g)
     print("Accessible nodes from A: ", known)
     plt.show()
 
