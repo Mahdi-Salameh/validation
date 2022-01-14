@@ -32,6 +32,27 @@ def bfs(graph):
     return known
 
 def find_accepting_bfs(graph):
+    known = dict()  # Known
+    frontier = Deque()  # Frontier #list_des_noeuds
+    at_start = True  # init
+
+    while frontier or at_start:
+        if at_start:
+            neighbours = graph.initial()
+            at_start = False
+        else:
+            neighbours = graph.next(frontier.popleft())
+        for n in neighbours:
+            
+            if n not in known:
+                if graph.is_accepting(n):
+                    return True, n
+                known[n] = n
+                frontier.append(n)
+
+    return False, None
+
+def find_accepting_bfs_1(graph):
     known = set()  # Known
     frontier = Deque()  # Frontier #list_des_noeuds
     at_start = True  # init
