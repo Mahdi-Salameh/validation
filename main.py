@@ -18,10 +18,10 @@ from algorithms import *
 from simpleGraph import *
 from counter import *
 from souplang import *
-from Predicate import *
+#from Predicate import *
 from aliceBobV0 import *
 from hanoi import *
-from counter import *
+
 
 def main_networkx():
 

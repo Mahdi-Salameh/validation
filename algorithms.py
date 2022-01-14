@@ -120,7 +120,7 @@ def predicate_model_checker(semantics, predicate):
 
     tr = ParentStore_Proxy(tr)
     r = find_accepting_bfs(tr)
-
+    get_trace(tr.parent, r, tr.initial())
 
 def get_trace(parents, result, initial):
     status,target = result
