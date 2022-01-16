@@ -8,8 +8,8 @@ Created Tuesday November 30 21:36:20 2021
 
 from typing import Deque
 
-from STR2TR import STR2TR, isAcceptingProxy
-from kernel import ParentStore_Proxy
+#from kernel import ParentStore_Proxy
+from kernel import *
 
 
 def bfs(graph):

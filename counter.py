@@ -1,7 +1,6 @@
 from souplang import *
 from souplang import *
 from algorithms import *
-from STR2TR import *
 from kernel import *
 
 
