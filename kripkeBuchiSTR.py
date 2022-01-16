@@ -1,5 +1,38 @@
 from kernel import *
 
+class iSTR:
+    def __init__(self, str):
+        self.operand = str
+    
+    def actions(self, i, conf):
+        actions = self.operand.actions(conf)
+        for a in actions:
+            if a[0](i):
+                actions.append(a)
+        return actions
+    
+    def execute(self, i, conf, actions):
+        targets =[]
+        for a in actions(conf):
+            target = self.operand.execute(conf,a)
+            target.append(target)
+        return targets[conf](i)
+
+
+class oSTR:
+    def __init__(self, str):
+        self.operand = str
+    
+    def actions(self, conf):
+        return self.operand.actions(conf)
+
+    def execute(self, conf, actions):
+        targets = []
+        for a in actions(conf):
+            target = self.operand.execute(conf, a)
+            targets.append(target)
+        return targets, self.operand
+
 class KripkeBuchiSTR(SemanticTransitionRelation):
 
     def __init__(self, lhs, rhs):
@@ -35,3 +68,24 @@ class KripkeBuchiSTR(SemanticTransitionRelation):
         ktarget,baction = action
         _,bsrc = conf
         return ktarget,self.rhs.execute(ktarget,baction,bsrc) 
+
+
+class buchiSemantics(iSTR):
+    def __init__(self, t):
+        self.initial = t[0]
+        self.delta = t[1]
+        self.predi = t[2]
+
+    def initial(self):
+        return [self.initial]
+
+    def actions(self, i, c):
+        actions = []
+        for a in self.delta[c]:
+            if a[0](i):
+                actions.append(a)
+        return actions
+
+    def execute(self, i, conf, a):
+        return a[1]
+
