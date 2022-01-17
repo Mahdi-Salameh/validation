@@ -157,3 +157,76 @@ def get_trace(parents, result, initial):
         trace.append(currentNode)
 
     print("Trace : ", trace)
+
+
+def find_cycle(graph, initial, end):
+    known = set()
+    frontier = Deque()
+    at_start = True
+    while len(frontier) != 0 | at_start:
+        if at_start:
+            neighbours = initial
+            at_start = False
+        else:
+            nodes = frontier.popleft()
+            neighbours = graph.next(nodes)
+        for n in neighbours:
+            if n not in known:
+                if n == end:
+                    return True
+                frontier.append(n)
+                known.append(n)
+    return False
+
+
+def isAccepting_cycle(graph):
+    known = []
+    frontier = Deque()
+    at_start = True
+    while len(frontier) != 0 or at_start:
+        if at_start:
+            neighbours = graph.initial()
+            at_start = False
+        else:
+            nodes = frontier.popleft()
+            neighbours = graph.next(nodes)
+        for n in neighbours:
+            if n not in known:
+                if graph.is_accepting(n):
+                    if find_cycle(graph, graph.next(n), n):
+                        return True
+                frontier.append(n)
+                known.append(n)
+    return False
+
+def bfs_iterative(graph):
+    known = []
+    frontier = Deque()
+    at_start = True
+    while len(frontier) != 0 | at_start:
+        if at_start:
+            neighbours = graph.initial()
+            at_start = False
+        else:
+            nodes = frontier.popleft()
+            neighbours = graph.next(nodes)
+        for n in neighbours:
+            if n not in known:
+                if graph.is_accepting(n):
+                    return True
+                frontier.append(n)
+                known.append(n)
+    return False
+
+
+
+def model_checker(krypkeSemantic, buchiSemantic):
+    compSync = KripkeBuchiSTR(krypkeSemantic, buchiSemantic)
+    tr = STR2TR(compSync)
+    tr = isAcceptingProxy(tr, lambda c:  buchiSemantic.pred(c[1]))
+    return isAccepting_cycle(tr)
+
+#def predicate_model_checker(semantic, predicate):
+#    tr = STR2TR(semantic)
+#    tr = isAcceptingProxy(tr, predicate)
+#    return bfs_iterative(tr)
